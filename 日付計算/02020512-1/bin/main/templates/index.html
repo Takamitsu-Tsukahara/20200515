@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>新規登録</title>
+<meta charset="utf-8" />
+<link href="index.css" rel="stylesheet"></link>
+</head>
+<body>
+	<h1>現在</h1>
+	<p th:text="${modelNow}"></p>
+	<table>
+		<tr>
+			<th></th>
+			<th>年</th>
+			<th>月</th>
+			<th>日</th>
+			<th>曜日</th>
+		</tr>
+		<tr>
+			<th>基準日</th>
+			<th th:text="${todayYear}">年</th>
+			<th th:text="${todayMonth}">月</th>
+			<th th:text="${todayDay}">日</th>
+			<th th:text="${todayWeek}">曜日</th>
+		</tr>
+		<tr>
+			<th>変化分</th>
+			<th th:text="${numberYear}">年</th>
+			<th th:text="${numberMonth}">月</th>
+			<th th:text="${numberDay}">日</th>
+			<th></th>
+		</tr>
+		<tr>
+			<th>変更後</th>
+			<th th:text="${modelYear}">年</th>
+			<th th:text="${modelMonth}">月</th>
+			<th th:text="${modelDay}">日</th>
+			<th th:text="${modelWeek}">曜日</th>
+		</tr>
+	</table>
+
+
+	<form th:action="@{/indexPlus}" th:object="${Request}" method="post">
+		<h1>追加日数</h1>
+		<table>
+			<tr>
+				<th>年</th>
+				<th>月</th>
+				<th>日</th>
+			</tr>
+			<tr>
+				<td><input type="number" th:field="*{plusyear}"></td>
+				<td><input type="number" th:field="*{plusmonth}"></td>
+				<td><input type="number" th:field="*{plusday}"></td>
+			</tr>
+		</table>
+		<div><input type="submit" value="変化" class="btn"></div>
+	</form>
+</body>
+</html>
